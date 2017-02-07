@@ -1,0 +1,176 @@
+.container {
+  width: 1600px;
+  height: 800px;
+}
+
+.top {
+  width: 1428px;
+  height: 70px;
+  background-color: orange;
+  border: 1px solid orange;
+  border-radius: 2em;
+
+}
+
+.cmd {
+  width: 1428px;
+  height: 40px;
+  /*border: 1px solid red;*/
+}
+.search input[type=text] {
+  width: 225px;
+  height: 30px;
+  float: left;
+}
+.bar1 ul {
+  border: 1px solid white;
+}
+
+.bar1 li {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  margin: 0 1.5em 0 1.5em;
+}
+.bar1 button {
+  font-size: 1em;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: grey;
+}
+
+.bar1 button:hover {
+  background-color: orange;
+  color: white;
+  border-radius: 2em;
+
+}
+.bar1 button {
+  background-color: white;
+  border: 1px solid white;
+}
+
+.menu {
+  width: 225px;
+  height: 800px;
+  border: 1px solid lightgrey;
+  float: left;
+  background-color: lightgrey;
+}
+
+.ddbutton {
+  padding: 10px ;
+  font-size: 32px;
+  cursor: pointer;
+  background-color: orange;
+  width: 225px;
+  color: black;
+  border: 1px solid orange;
+  text-align: left;
+  color: grey;
+}
+.ddbutton:hover {
+  background-color: black;
+  color: white;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.ddcontent {
+  display: none;
+  position: absolute;
+  background-color: pink;
+}
+
+.dropdown a {
+  color: black;
+  padding: 12px;
+  font-size: 16px;
+  width: 200px;
+  text-decoration: none;
+  display: block;
+  transition-duration: 0.5s;
+}
+
+.ddcontent a:hover {
+  background-color: white;
+}
+
+.dropdown:hover .ddcontent {
+  display: block;
+}
+
+.dropdown:hover .ddbutton {
+  background-color: ;
+}
+
+.submenu {
+  width: 400px;
+  height: 800px;
+  background-color: white;
+  border: 1px solid white;
+  border-left: 2px solid orange;
+  float: left;
+}
+
+.ctn {
+  width: 400px;
+  height: 700px;
+  overflow: scroll;
+}
+
+.inbox {
+  text-align: left;
+  font-size: 1em;
+  font-family: arial;
+  margin: 0 0 0 1em;
+  width: 400px;
+  height: 700px;
+  color: grey;
+}
+
+.inb1 p {
+  text-align: center;
+  margin: 8em 5em 0em 5em;
+  font-size: 1em;
+  color: grey;
+}
+
+.sent {
+  text-align: left;
+  font-size: 1em;
+  font-family: arial;
+  margin: 0 0 0 1em;
+  color: grey;
+}
+
+.s1 p {
+  text-align: center;
+  margin: 8em 5em 0em 5em;
+  font-size: 1em;
+  color: grey;
+}
+
+.view {
+  width: 800px;
+  height: 800px;
+  border: 1px solid black;
+  background-color: white;
+  float: left;
+}
+
+.view img {
+  margin: 15em 0 0 15em;
+}
+.view img:hover {
+  width: 400px;
+  height: 400px;
+  transition-duration: 3s;
+}
+.view p {
+  text-align: center;
+  font-family: fantasy;
+  color: grey;
+}
