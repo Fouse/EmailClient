@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <title>CMPS 262 Module 6</title>
+  <style>
+  table, th, td {
+     border: 1px solid black;
+     border-collapse: collapse;
+     padding: 3px;
+  }
+  th {
+    background-color: orange;
+  }
+  </style>
+</head>
+<body>
+  @730 is an email client similar to microsoft outlook, built with the purpose of managing emails. There is a separate module
+  that implements the @730 Email Client functionality. It can be accessed through a global variable named
+  <em>mailapp</em>. Inside this global variable we have the following
+  functions available:
+  <br>
+  <table>
+    <tr>
+      <th>Function Name</th>
+      <th>Parameters</th>
+      <th>Return Value</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><em>Folder</em></td>
+      <td><em>name</em>: refers to the name of the folder</td>
+      <td>None</td>
+      <td>
+        This function assign name to a folder throught its parameter <em>name</em>, and store emails.
+      </td>
+    </tr>
+    <tr>
+      <td><em>Email</em></td>
+      <td><em>sender, receiver, subject, message</em>: email attribute</td>
+      <td>None</td>
+      <td>
+        This function assign email's attributes.
+      </td>
+    </tr>
+    <tr>
+      <td><em>createFolder</em></td>
+      <td><em>name</em>: name of the folder</td>
+      <td>None</td>
+      <td>
+        This function allow you to create a folder, and name it.
+      </td>
+    </tr>
+    <tr>
+      <td><em>addEmail</em></td>
+      <td><em>folderName, sender, receiver, subject, message</em></td>
+      <td>None</td>
+      <td>
+        This function add email to a specific folder with all of its attributes.
+      </td>
+    </tr>
+    <tr>
+      <td><em>getFolder</em></td>
+      <td><em>folderName</em></td>
+      <td>email</td>
+      <td>
+        This function return email from a folder.
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
