@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+  <link	rel = "stylesheet"	type = "text/css"	href = "style.css">
+  <script src="jquery-3.1.1.min.js"></script>
+  <script src="mailapp.js"></script>
+
+</head>
+<script>
+$(document).ready(function(){
+    mailapp.createFolder("Inbox");
+    mailapp.createFolder("Sent");
+    mailapp.createFolder("Drafts");
+    mailapp.addEmail("Inbox", "Fousseini", "Test", "This is just a test");
+    mailapp.addEmail("Inbox", "Facebook", "Hello", "What's up?");
+    mailapp.addEmail("Inbox", "James", "Good game!", "Yoou played very well");
+    mailapp.addEmail("Inbox", "Facebook", "Happy Birthday", "Team Facebook wish you a very happy birthday");
+    mailapp.addEmail("Inbox", "Fous", "Hi", "Hello");
+    mailapp.addEmail("Inbox", "Lassi", "Hello", "What's up?");
+
+    var folderNames = mailapp.getFolders();
+    for (var i = 0; i < folderNames.length; i++) {
+      $("#folders_list").append("<a href=\"javascript:void(0)\"onclick=\"show('"+folderNames[i]+"')\">" + folderNames[i] + "</a>");
+    }
+    var mails=mailapp.getFolder("Inbox");
+    // console.log(mails.length);
+    for (var i=0; i<mails.length; i++) {
+      $(".inbox").append("<button class='msBox'><p>"+mails[i].sender+"</p><p style='color:orange;'>"+mails[i].subject+"</p><p>"+mails[i].message+"</p></button>");
+      // $("#mailsList").append("Works!");
+
+    }
+    $(".inbox button").click(function() {
+      console.log("i was clicked");
+      targetToDelete = this;
+      //console.log(targetToDelete);
+    });
+    var targetToDelete=false;
+    $(".delete").click(function(){
+      if(targetToDelete){
+        $(targetToDelete).remove();
+        targetToDelete=false;
+      }
+    });
+
+  $("#mailsList").show();
+
+  $(".inbox").show();
+  $(".logo").hide();
+  $(".sent").hide();
+  $(".newEmail").hide();
+  $(".emailOutput").show();
+});
+function show(folder) {
+  $(".inbox").hide();
+  $(".sent").hide();
+  $(".newEmail").hide();
+  $(".logo").hide();
+  // $("#mailsList").hide();
+  $(".emailOutput").hide();
+
+  if (folder === "inbox") {
+    $("#mailsList").fadeIn(1000);
+    $(".logo").show();
+  }
+  else if (folder === "sent") {
+    $(".sent").fadeIn(1000);
+    $(".logo").show();
+    
+  }
+  else if (folder === "newEmail") {
+    $(".newEmail").show();
+  }
+  else if (folder === "emailOutput") {
+    $(".emailOutput").fadeIn(1000);
+  }
+
+}
+function mailsData() {
+  var rcv = $("#rcv").val();
+  var sb = $("#sb").val();
+  var msg = $("#msg").val();
+  mailapp.addToSentItems(rcv,sb,msg);
+  var mySentItems=mailapp.getSentItems();
+  for(var i=0; i<mySentItems.length; i++){
+    $(".sent").append("<button class='sentItemsBox'><p>"+mySentItems[i].receiver+"</p><p style='color:orange'>"+mySentItems[i].subject+"</p><p>"+mySentItems[i].message+"</p></button>");
+  }
+}
+
+
+</script>
+<body>
+  <div class="container">
+    <div class="top">
+      <img src="Eicon.png" width="60" height="60"><em>730</em>
+    </div>
+    <div class="cmd">
+    <div class="search">
+        <form>
+          <input type="text" name="search" placeholder="Search Mail and People..">
+        </form>
+      </div>
+    <div class="bar1">
+      <ul>
+        <li><button onclick="show('newEmail')">&oplus; New</button></li>
+        <li><button class="delete">&#10060; Delete</button></li>
+        <li><button>&#10064; Archieve</button></li>
+        <!-- <li><button>Move to &#9663;</button></li>
+        <li><button>Categories &#9663;</button></li>
+      <li><button>More &#9663;</button></li> -->
+    </ul>
+    </div>
+  </div>
+    <div class="menu">
+      <div class="dropdown">
+        <button class="ddbutton">&dtri; Folders</button>
+        <div id="folders_list" class="ddcontent">
+
+          <a href="javascript:void(0)"onclick="show('inbox')">Inbox</a>
+          <a href="javascript:void(0)"onclick="show('sent')">Sent Items</a>
+          <!-- <a href="">More</a> -->
+
+        </div>
+      </div>
+    </div>
+    <div class="submenu">
+      <div class="ctn">
+        <div id="mailsList" class="inbox">
+        </div>
+        <div id="sent" class="sent">
+
+        </div>
+      </div>
+    </div>
+    <div class="view">
+      <div class="newEmail">
+        <table>
+          <tr>
+            <td>
+              <input id="rcv" type="text" name="Receiv" placeholder="To:"></input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input id="sb" type="text" name="Sub" placeholder="Subject:"></input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <textarea id="msg" type="text" name="message" placeholder="Add Message here"></textarea>
+            </td>
+          </tr>
+        </table>
+        <button onclick="mailsData()">Send &gg;</button>
+      </div>
+      <div class="emailOutput">
+        <table>
+        <div class="sub">
+          <p>Test</p>
+        </div>
+        <div class="senderContact">
+          <p>Fousseini</p>
+        </div>
+        <div class="msgOutput">
+          <p>
+            This is just a simulation output of an email. I'm still working on how an email should be displayed.
+            Also the subject, and the sender contact. By the way, the subject is on top, followed by the sender contact, and then the message.
+          </p>
+          <img src="e.ico" width="200" height="200">
+        </div>
+      </table>
+      </div>
+      <div class="logo">
+      <img src="e.ico" width="200" height="200">
+        <p style="text-align:center">Choose a message to read it.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
